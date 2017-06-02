@@ -1,61 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link rel="stylesheet" href="styles.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-  <div id="buttons"></div>
-  <form id="gif-form">
-      <label for="gif-input">Add some feels</label>
-      <input type="text" id="git-input"><br>
+	<div id="buttons"></div>
+	<form id="gif-form">
+		<label for="gif-input">Add some feels</label>
+		<input type="text" id="git-input"><br>
 
-      <!-- Button triggers new movie to be added -->
-      <input id="add-gif" type="submit" value="Add some feels">
-    </form>
-    <div id="gifs"></div>
-
-
+		<!-- Button triggers new movie to be added -->
+		<input id="add-gif" type="submit" value="Add some feels">
+	</form>
+	<div id="gifs"></div>
 
 
 
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript">
-  var topics = ["happy", "sad", "laughing", "angry", "dumb", "confused", "annoyed", "tired", "finished"]
-  var search;
-  var apiKey = "dc6zaTOxFJmzC"
-  var num = 10
-  var search;
-  var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + search + "&api_key=" + apiKey + "&limit=" + num
-
-  for (var i = 0; i < topics.length; i++) {
-  $("#buttons").append("<button>" + topics[i] + "</button>")
-  }
 
 
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript">
+		var topics = ["happy", "sad", "laughing", "angry", "dumb", "confused", "annoyed", "tired", "finished"]
+		var search;
+		var apiKey = "dc6zaTOxFJmzC"
+		var num = 3
+		var search;
+		var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + search + "&api_key=" + apiKey + "&limit=" + num
 
-  $.ajax({
-    url: queryURL,
-    method: "GET"
-  }).done(function(response) {
-    $("button").on("click", function() {
-      search = ($(this).text())
-    for (var i = 0; i < response.data.length; i++)
-      $("#gifs").append("<img src=" + response.data[i].embed_url + ">")
+		function addButtons() {
+			for (var i = 0; i < topics.length; i++) {
+				$("#buttons").append("<button>" + topics[i] + "</button>")
+			}
+		}
+		addButtons()
 
-      console.log(response.data[0])
+		$("#buttons").on("click", "button", function(event) {
 
-    })
-  })
-  </script>
+			search = ($(this).text());
+
+			$.ajax({
+				url: queryURL,
+				method: "GET"
+			}).done(function(response) {
+
+				for (var i = 0; i < response.data.length; i++)
+					$("#gifs").append("<img src=" + response.data[i].images_fixed_height_url + ">")
+				console.log(response.data[0])
+
+			})
+
+			$("#buttons").html("")
+			addButtons()
+		});
+
+
+	</script>
 
 
 
-  <script type="text/javascript" src="javascript.js"></script>
+	<script type="text/javascript" src="javascript.js"></script>
 </body>
+
 </html>
