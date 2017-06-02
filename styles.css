@@ -1,0 +1,28 @@
+button {
+	margin: 10px;
+}
+
+.container {
+	margin-bottom: 25px;
+
+}
+img {
+	margin: 10px;
+}
+
+.col-lg-4 {
+	border: 2px solid black;
+	float: right;
+	margin: 20px;
+	padding: 20px;
+}
+
+.sliders {
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
+.row {
+	padding-left: 20px;
+	margin-bottom: 20px;
+}
