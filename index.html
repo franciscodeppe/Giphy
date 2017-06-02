@@ -29,44 +29,43 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript">
 		var topics = ["happy", "sad", "laughing", "angry", "dumb", "confused", "annoyed", "tired", "finished"]
-		var search;
 		var apiKey = "dc6zaTOxFJmzC"
 		var num = 3
 		var search;
-		var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + search + "&api_key=" + apiKey + "&limit=" + num
+
 
 		function addButtons() {
-			for (var i = 0; i < topics.length; i++) {
+      for (var i = 0; i < topics.length; i++) {
 				$("#buttons").append("<button>" + topics[i] + "</button>")
 			}
 		}
 		addButtons()
 
-		$("#buttons").on("click", "button", function(event) {
+		$("#buttons").on("click", "button", function() {
 
-			search = ($(this).text());
+			search = ($(this)[0].innerHTML)
+      console.log(search)
+
+      var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + search + "&api_key=" + apiKey + "&limit=" + num;
 
 			$.ajax({
 				url: queryURL,
 				method: "GET"
 			}).done(function(response) {
-
+        $("#gifs").empty()
 				for (var i = 0; i < response.data.length; i++)
-					$("#gifs").append("<img src=" + response.data[i].images_fixed_height_url + ">")
-				console.log(response.data[0])
+					$("#gifs").append("<img src=" + response.data[i].images.fixed_height.url + ">")
+				console.log(response.data)
+        console.log(queryURL)
 
 			})
 
-			$("#buttons").html("")
+			$("#buttons").empty()
 			addButtons()
 		});
 
 
 	</script>
-
-
-
-	<script type="text/javascript" src="javascript.js"></script>
 </body>
 
 </html>
