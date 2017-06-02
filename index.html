@@ -60,10 +60,12 @@
           var animate = response.data[i].images.fixed_height.url;
           var gifImage = $("<img>");
           $(gifImage).attr("src", still);
-          $(gifImage).attr()
+          $(gifImage)attr(data-still(still))
+          $(gifImage).data-animate(animate)
           $(gifDiv).append(gifImage);
           $(gifImage).on("click", function() {
-            (gifImage).attr("src", animate)
+
+            (gifImage).attr("src", data-animate)
           })
         }
 
