@@ -2,48 +2,49 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.0/css/bootstrap-slider.css">
-  <link rel="stylesheet" href="styles.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.0/css/bootstrap-slider.css">
+	<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-  <div class="container">
-      <div class="row">
-      <div class="col-lg-4 panel">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6">
+				<form class="form-group" id="gif-form">
 
-        <input id="gif_slider" type="text" data-slider-min="1" data-slider-max="15" data-slider-step="1" data-slider-value="1" /><br>
-        <span class="sliders" id="GifCurrentSliderValLabel">Gif Number:<span id="GifSliderVal"></span></span><br>
+					<label for="gif-input">Add some feels</label>
+					<input type="text" id="gif-input">
+					<input id="add-gif" type="submit" value="Add some feels">
 
-        <input id="rating_slider" type="text" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="1" /><br>
-        <span class="sliders" id="RatingCurrentSliderValLabel">Rating: <span id="RatingSliderVal"></span></span><br>
+				</form>
+			</div>
+		</div>
+		<div class="container">
+			<div id="buttons"></div>
+		</div>
+		<div class="col-lg-6 panel">
+			<div class="col-lg-4">
+				<input id="gif_slider" type="text" data-slider-min="1" data-slider-max="15" data-slider-step="1" data-slider-value="1" /><br>
+				<span class="sliders" id="GifCurrentSliderValLabel">Gif Number:<span id="GifSliderVal"></span></span><br>
+			</div>
+			<div class="col-lg-4 col-lg-push-1">
+				<input id="rating_slider" type="text" data-slider-min="1" data-slider-max="5" data-slider-step="1" data-slider-value="1" /><br>
+				<span class="sliders" id="RatingCurrentSliderValLabel">Rating: <span id="RatingSliderVal"></span></span><br>
+			</div>
+		</div>
+		<div class="container">
+			<div id="gifs"></div>
+		</div>
+	</div>
 
-      </div>
-      <div class="col-lg-4">
-        <form class="form-group" id="gif-form">
-
-          <label for="gif-input">Add some feels</label>
-          <input type="text" id="git-input">
-          <input id="add-gif" type="submit" value="Add some feels">
-
-        </form>
-      </div>
-    </div>
-    <div class="container">
-      <div id="buttons"></div>
-    </div>
-    <div class="container">
-      <div id="gifs"></div>
-    </div>
-  </div>
-
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.0/bootstrap-slider.js"></script>
-    <script type="text/javascript" src='javascript.js'></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.0/bootstrap-slider.js"></script>
+	<script type="text/javascript" src='javascript.js'></script>
 </body>
 
 </html>

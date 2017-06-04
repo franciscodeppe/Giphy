@@ -10,10 +10,14 @@ img {
 	margin: 10px;
 }
 
-.col-lg-4 {
+.col-lg-6 {
 	border: 2px solid black;
 	margin: 20px;
 	padding: 20px;
+}
+.col-lg-4 {
+	padding: 10px;
+	margin: 20px;
 }
 
 .panel {
