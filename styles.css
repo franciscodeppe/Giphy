@@ -33,3 +33,7 @@ img {
 	padding-left: 20px;
 	margin-bottom: 20px;
 }
+
+.jumbotron {
+	text-align: center;
+}

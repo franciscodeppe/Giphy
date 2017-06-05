@@ -10,9 +10,9 @@ var rating = "pg"
 
 $("#rating_slider").slider();
 $("#rating_slider").on("slide", function(slideEvt) {
-    var ratings = ["y", "g", "pg", "pg-13", "r"];
+    ratingOption = ["y", "g", "pg", "pg-13", "r"];
     var n = slideEvt.value - 1;
-    $("#RatingSliderVal").text(ratings[n]);
+    $("#RatingSliderVal").text(ratingOption[n]);
     rating = $("#RatingSliderVal").text()
 });
 
@@ -20,8 +20,9 @@ $("#gif_slider").slider();
 $("#gif_slider").on("slide", function(slideEvt) {
     $("#GifSliderVal").text(slideEvt.value)
 	num = slideEvt.value;
-
 });
+
+$("#GifSliderVal").text($("#GifCurrentSliderValLabel").attr("data-slider-value"))
 
 $("#add-gif").on("click", function(event) {
     event.preventDefault()
@@ -49,7 +50,7 @@ $("#buttons").on("click", "button", function() {
     console.log(rating)
 
 
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + search + "&rating=" + rating + "&api_key=" + apiKey + "&limit=" + num;
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + search + "&rating=" + rating + "&api_key=" + apiKey + "&limit=" + num;
 
     $.ajax({
         url: queryURL,
@@ -57,6 +58,7 @@ $("#buttons").on("click", "button", function() {
     }).done(function(response) {
 
         $("#gifs").empty()
+		console.log(response.data)
 
         var gifObject = []
 
@@ -89,15 +91,15 @@ $("#buttons").on("click", "button", function() {
 	var check = true
 	$(document).on("click", "img", function() {
 		event.preventDefault()
-		console.log($(this).attr("data-still"))
+		// console.log($(this).attr("data-still"))
 		if (check) {
-			console.log("yes")
-			console.log(num)
+			// console.log("yes")
+			// console.log(num)
 			$(this).attr("src", $(this).attr("data-animate"))
 			check = false
 
 		} else {
-			console.log(false)
+			// console.log(false)
 			$(this).attr("src", $(this).attr("data-still"))
 			check = true
 		}
